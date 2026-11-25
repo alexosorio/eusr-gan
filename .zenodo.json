@@ -1,0 +1,30 @@
+{
+  "upload_type": "software",
+  "title": "EUSR-GAN: code for ultrasound super-resolution and the effect of interpolated references on its evaluation",
+  "description": "<p>Code for the manuscript <i>EUSR-GAN: A lightweight multi-scale GAN for ultrasound super-resolution and the effect of interpolated references on its evaluation</i>: CAMUS and BUSI experiments under the protocol of Ahmad et al. and at native resolution, the re-implementation of Ahmad et al., EDSR-baseline and SwinIR-light baselines, ablations, task-based and wavelet analyses, figure generation, and a web prototype.</p>",
+  "creators": [
+    {
+      "name": "Osorio Barone, Alexander",
+      "affiliation": "Universidad Tecnológica de Bolívar",
+      "orcid": "0009-0003-7537-8294"
+    },
+    {
+      "name": "Contreras, Sonia",
+      "affiliation": "Universidad Tecnológica de Bolívar"
+    },
+    {
+      "name": "Puertas, Edwin",
+      "affiliation": "Universidad Tecnológica de Bolívar"
+    }
+  ],
+  "keywords": [
+    "ultrasound",
+    "super-resolution",
+    "generative adversarial networks",
+    "echocardiography",
+    "breast ultrasound",
+    "evaluation protocol"
+  ],
+  "license": "MIT",
+  "access_right": "open"
+}

@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "EUSR-GAN: code for ultrasound super-resolution and the effect of interpolated references on its evaluation"
+authors:
+  - family-names: "Osorio Barone"
+    given-names: "Alexander"
+    affiliation: "Universidad Tecnológica de Bolívar"
+    orcid: "https://orcid.org/0009-0003-7537-8294"
+  - family-names: "Contreras"
+    given-names: "Sonia"
+    affiliation: "Universidad Tecnológica de Bolívar"
+  - family-names: "Puertas"
+    given-names: "Edwin"
+    affiliation: "Universidad Tecnológica de Bolívar"
+license: MIT
+repository-code: "https://github.com/alexosorio/eusr-gan"
+keywords:
+  - ultrasound
+  - super-resolution
+  - generative adversarial networks

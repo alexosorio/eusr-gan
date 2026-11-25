@@ -43,6 +43,8 @@ experiments/
     ahmad_camus_no_gan.py  Ahmad et al. without the adversarial stage
   legacy_v6/             earlier BUSI pipeline at 256×256 (reported in the Discussion only)
 web/                     web prototype (FastAPI + browser UI): upload an image, mark a region, compare
+tools/
+  zenodo_subir_resultados.py  packages trained weights and per-image results and uploads them to Zenodo
 ```
 
 The ablation scripts are standalone copies of `busi_native.py` with one setting changed (see the header of each file), so every reported run can be reproduced as is.
@@ -131,9 +133,16 @@ See `web/README.md` (in Spanish) for local use and deployment with Docker.
 If you use this code, please cite the manuscript (reference to be updated on publication):
 
 ```
-[Authors]. EUSR-GAN: A lightweight multi-scale GAN for ultrasound super-resolution and the
-effect of interpolated references on its evaluation. [Journal]. [Year].
+Osorio Barone A, Contreras S, Puertas E. EUSR-GAN: A lightweight multi-scale GAN for
+ultrasound super-resolution and the effect of interpolated references on its evaluation.
+[Journal]. [Year].
 ```
+
+## Authors
+
+- Alexander Osorio Barone ([ORCID 0009-0003-7537-8294](https://orcid.org/0009-0003-7537-8294)), Doctorate in Engineering, Universidad Tecnológica de Bolívar, Cartagena, Colombia
+- Sonia Contreras (advisor), Universidad Tecnológica de Bolívar
+- Edwin Puertas (co-advisor), Universidad Tecnológica de Bolívar
 
 ## License
 
