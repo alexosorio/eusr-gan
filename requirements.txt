@@ -1,0 +1,13 @@
+# Versions used in the experiments (CPU-only, Python 3.11)
+tensorflow-cpu==2.12.0 ; platform_machine == "x86_64"
+tensorflow==2.12.0 ; platform_machine == "aarch64"
+numpy==1.23.5
+scipy>=1.10,<1.12
+pillow>=9.4
+matplotlib>=3.7
+scikit-learn>=1.2
+nibabel>=5.0           # CAMUS (NIfTI)
+ultralytics>=8.0       # YOLOv8 (lesion-guided patches and detection)
+PyWavelets==1.4.1      # wavelet analysis; newer versions upgrade NumPy and break TensorFlow 2.12
+# Optional, legacy_v6/eval_eusr.py only (LPIPS):
+# torch, lpips

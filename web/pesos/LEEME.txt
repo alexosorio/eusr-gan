@@ -1,0 +1,13 @@
+Copie aquí los pesos entrenados de EUSR-GAN (desde /home/datascience en JupyterLab):
+
+  Mama (BUSI):
+    resultados_busi_native_scratch_yolo/g_busi_stage1_best.weights.h5
+    → pesos/eusr_busi.weights.h5
+
+  Corazón (CAMUS):
+    resultados_camus_native/g_camus_stage1_best.weights.h5
+    → pesos/eusr_camus.weights.h5
+    (si resultados_camus_native/resultados_camus.json dice "stage2_used": true,
+     use en su lugar g_camus_stage2_best.weights.h5)
+
+Basta con uno de los dos: la aplicación ofrece solo los modelos cuyos pesos encuentre.

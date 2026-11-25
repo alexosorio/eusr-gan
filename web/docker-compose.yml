@@ -1,0 +1,33 @@
+# Uso:
+#   docker compose up -d --build                    → http://IP_DEL_SERVIDOR:8000
+#   docker compose --profile https up -d --build    → https://DOMINIO (requiere DOMINIO en .env)
+services:
+  eusr:
+    build: .
+    image: eusr-web:1.0
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./pesos:/srv/pesos:ro          # los pesos se leen desde el servidor, sin reconstruir la imagen
+
+  caddy:                               # HTTPS automático con Let's Encrypt (opcional)
+    profiles: ["https"]
+    image: caddy:2.8
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - DOMINIO=${DOMINIO:-localhost}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_datos:/data
+    depends_on:
+      - eusr
+
+volumes:
+  caddy_datos:

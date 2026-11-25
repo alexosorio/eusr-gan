@@ -1,0 +1,10 @@
+# Mismas versiones con que se entrenó EUSR-GAN (TensorFlow 2.12, NumPy 1.x),
+# para que los pesos .weights.h5 se carguen sin conversión.
+tensorflow-cpu==2.12.0 ; platform_machine == "x86_64"
+tensorflow==2.12.0 ; platform_machine == "aarch64"
+numpy==1.23.5
+pillow==10.3.0
+fastapi==0.110.3
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9
+pydicom==2.4.4

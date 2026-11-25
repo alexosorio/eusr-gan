@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EUSR-GAN · Prototipo</title>
+<link rel="stylesheet" href="/static/estilos.css">
+</head>
+<body>
+<header class="barra">
+  <div class="marca">
+    <span class="logo" aria-hidden="true"></span>
+    <div>
+      <h1>EUSR-GAN</h1>
+      <p>Super-resolución de ecografía · prototipo de investigación</p>
+    </div>
+  </div>
+  <div id="estado-servidor" class="pastilla">Conectando…</div>
+</header>
+
+<div class="aviso" role="note">
+  Prototipo de investigación. Los resultados no están validados para uso diagnóstico y no deben guiar decisiones clínicas.
+</div>
+
+<main class="contenido">
+  <aside class="panel">
+    <section class="paso">
+      <h2><span class="num">1</span> Imagen</h2>
+      <label id="zona-carga" class="carga" tabindex="0">
+        <input id="archivo" type="file" accept=".png,.jpg,.jpeg,.bmp,.tif,.tiff,.dcm,.dicom,image/*,application/dicom">
+        <span class="carga-texto"><strong>Elija o arrastre una imagen</strong><br>PNG, JPG, BMP, TIFF o DICOM</span>
+      </label>
+      <p id="info-archivo" class="nota"></p>
+    </section>
+
+    <section class="paso">
+      <h2><span class="num">2</span> Modelo</h2>
+      <select id="modelo" aria-label="Modelo"></select>
+      <p id="desc-modelo" class="nota"></p>
+    </section>
+
+    <section class="paso">
+      <h2><span class="num">3</span> Modo</h2>
+      <div class="segmentado" role="radiogroup" aria-label="Modo">
+        <label><input type="radio" name="modo" value="ampliar" checked><span>Ampliar zona ×4</span></label>
+        <label><input type="radio" name="modo" value="validar"><span>Validar con referencia</span></label>
+      </div>
+      <p id="desc-modo" class="nota"></p>
+    </section>
+
+    <section class="paso">
+      <h2><span class="num">4</span> Zona a mejorar</h2>
+      <p class="nota">Arrastre sobre la imagen para marcar la zona; arrastre dentro de ella para moverla.</p>
+      <p id="info-zona" class="dato">Sin zona: se usará la imagen completa.</p>
+      <div class="fila">
+        <button id="btn-completa" class="secundario" type="button" disabled>Imagen completa</button>
+        <button id="btn-borrar" class="secundario" type="button" disabled>Borrar zona</button>
+      </div>
+      <p id="estimacion" class="nota"></p>
+    </section>
+
+    <section class="paso">
+      <h2><span class="num">5</span> Opciones</h2>
+      <label class="check"><input id="autoensamble" type="checkbox">
+        <span>Autoensamble ×8<br><small>Promedia 8 orientaciones: algo más fiel, 8 veces más lento.</small></span></label>
+    </section>
+
+    <button id="btn-mejorar" class="primario" type="button" disabled>Mejorar zona</button>
+    <p id="error" class="error" role="alert"></p>
+  </aside>
+
+  <section class="trabajo">
+    <div class="tarjeta">
+      <div class="tarjeta-cab">
+        <h2>Imagen de entrada</h2>
+        <span id="dim-imagen" class="nota"></span>
+      </div>
+      <div id="lienzo-caja" class="visor visor-seleccion">
+        <canvas id="lienzo" aria-label="Imagen de entrada; arrastre para marcar la zona"></canvas>
+        <div id="vacio" class="vacio">Cargue una imagen para empezar</div>
+      </div>
+    </div>
+
+    <div id="resultado" class="tarjeta" hidden>
+      <div class="tarjeta-cab">
+        <h2>Resultado</h2>
+        <div class="controles">
+          <div class="segmentado pequeno" role="tablist" aria-label="Vista">
+            <label><input type="radio" name="vista" value="deslizador" checked><span>Comparar</span></label>
+            <label><input type="radio" name="vista" value="lado"><span>Lado a lado</span></label>
+            <label id="tab-error" hidden><input type="radio" name="vista" value="error"><span>Error</span></label>
+          </div>
+          <select id="zoom" aria-label="Zoom">
+            <option value="ajustar">Ajustar</option>
+            <option value="1">100 %</option>
+            <option value="2">200 %</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="avisos" class="avisos"></div>
+      <div id="metricas" class="metricas" hidden></div>
+
+      <div id="vista-deslizador">
+        <div class="fila etiquetas">
+          <label>Izquierda:
+            <select id="izquierda">
+              <option value="bicubica">Interpolación bicúbica</option>
+              <option value="entrada">Entrada (píxeles)</option>
+              <option value="referencia">Referencia original</option>
+            </select>
+          </label>
+          <span class="derecha-fija">Derecha: <strong>EUSR-GAN</strong></span>
+        </div>
+        <div class="visor desplazable" id="caja-comp">
+          <div id="comp" class="comparador">
+            <img id="img-der" alt="Resultado EUSR-GAN">
+            <img id="img-izq" alt="Imagen de comparación">
+            <div id="divisor" class="divisor" role="slider" tabindex="0" aria-label="Posición del deslizador"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span></span></div>
+            <span class="rotulo rotulo-izq" id="rotulo-izq">Bicúbica</span>
+            <span class="rotulo rotulo-der">EUSR-GAN</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="vista-lado" hidden>
+        <div id="rejilla" class="rejilla"></div>
+      </div>
+
+      <div id="vista-error" hidden>
+        <p class="nota">Error absoluto frente a la referencia, realzado ×4: cuanto más oscuro, más fiel.</p>
+        <div id="rejilla-error" class="rejilla"></div>
+      </div>
+
+      <div class="fila pie">
+        <span id="info-resultado" class="nota"></span>
+        <span class="separa"></span>
+        <a id="descarga-eusr" class="boton secundario" download="eusr_gan.png">Descargar EUSR-GAN</a>
+        <a id="descarga-bic" class="boton secundario" download="bicubica.png">Descargar bicúbica</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="cargando" class="cargando" hidden>
+  <div class="cargando-caja">
+    <div class="giro" aria-hidden="true"></div>
+    <p id="cargando-texto">Procesando…</p>
+    <p id="cargando-tiempo" class="nota"></p>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

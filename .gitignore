@@ -1,0 +1,18 @@
+# Data (public datasets, not redistributed)
+camus/
+busi/
+# Results, weights and logs produced by the experiments
+resultados_*/
+evaluacion_*/
+*.weights.h5
+*.h5
+*.pt
+runs/
+log_*.txt
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+# Web prototype secrets
+web/.env
