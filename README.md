@@ -1,5 +1,7 @@
 # EUSR-GAN: ultrasound super-resolution and the effect of interpolated references
 
+[![Data DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24568376.svg)](https://doi.org/10.5281/zenodo.24568376)
+
 Code for the manuscript *"EUSR-GAN: A lightweight multi-scale GAN for ultrasound super-resolution and the effect of interpolated references on its evaluation"* (submitted).
 
 EUSR-GAN is a 2.33 M-parameter generative adversarial network for ×4 super-resolution (SR) of B-mode ultrasound. It builds on the multi-scale, progressive-upscaling design of Ahmad et al. (Sci. Rep. 2022), adding:
@@ -111,7 +113,7 @@ Typical training time on the CPU machine is 3.5–4.5 h per EUSR-GAN run.
 
 ## Trained weights and per-image results
 
-The trained weights (`*.weights.h5`) and the per-image result files (`resultados_*.json`) that underlie every table and figure are available at: **[Zenodo DOI — to be added]**.
+The trained weights (`*.weights.h5`), the per-image result files (`resultados_*.json`), training logs and the YOLOv8 lesion detector that underlie every table and figure are available on Zenodo: **[doi:10.5281/zenodo.24568376](https://doi.org/10.5281/zenodo.24568376)**.
 
 ## Web prototype
 
