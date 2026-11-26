@@ -12,6 +12,15 @@ authors:
   - family-names: "Puertas"
     given-names: "Edwin"
     affiliation: "Universidad Tecnológica de Bolívar"
+version: "1.0.0"
+doi: "10.5281/zenodo.24568640"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24568640"
+    description: "Source code (this repository)"
+  - type: doi
+    value: "10.5281/zenodo.24568376"
+    description: "Trained weights, training logs and per-image results"
 license: MIT
 repository-code: "https://github.com/alexosorio/eusr-gan"
 keywords:

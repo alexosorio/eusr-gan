@@ -1,5 +1,6 @@
 # EUSR-GAN: ultrasound super-resolution and the effect of interpolated references
 
+[![Code DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24568640.svg)](https://doi.org/10.5281/zenodo.24568640)
 [![Data DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24568376.svg)](https://doi.org/10.5281/zenodo.24568376)
 
 Code for the manuscript *"EUSR-GAN: A lightweight multi-scale GAN for ultrasound super-resolution and the effect of interpolated references on its evaluation"* (submitted).
@@ -111,6 +112,10 @@ Each run writes a `resultados_*` folder with:
 
 Typical training time on the CPU machine is 3.5–4.5 h per EUSR-GAN run.
 
+## Code archive
+
+Each GitHub release of this repository is archived on Zenodo: **[doi:10.5281/zenodo.24568640](https://doi.org/10.5281/zenodo.24568640)** (v1.0.0 is the version described in the manuscript).
+
 ## Trained weights and per-image results
 
 The trained weights (`*.weights.h5`), the per-image result files (`resultados_*.json`), training logs and the YOLOv8 lesion detector that underlie every table and figure are available on Zenodo: **[doi:10.5281/zenodo.24568376](https://doi.org/10.5281/zenodo.24568376)**.
@@ -138,6 +143,13 @@ If you use this code, please cite the manuscript (reference to be updated on pub
 Osorio Barone A, Contreras S, Puertas E. EUSR-GAN: A lightweight multi-scale GAN for
 ultrasound super-resolution and the effect of interpolated references on its evaluation.
 [Journal]. [Year].
+```
+
+To cite the software itself (all versions):
+
+```
+Osorio Barone A, Contreras S, Puertas E. EUSR-GAN (v1.0.0) [software]. Zenodo; 2026.
+doi:10.5281/zenodo.24568640
 ```
 
 ## Authors
